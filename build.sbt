@@ -3,7 +3,7 @@ enablePlugins(JavaAppPackaging)
 name         := """samen-fietsen"""
 organization := "nl.ett-twello"
 version      := "0.0.1"
-scalaVersion := "2.11.7"
+scalaVersion := "latest"
 
 scalacOptions := Seq("-unchecked", "-deprecation", "-encoding", "utf8")
 

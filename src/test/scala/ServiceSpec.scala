@@ -11,6 +11,14 @@ class ServiceSpec extends FlatSpec with Matchers with ScalatestRouteTest with Se
   override def testConfigSource = "akka.loglevel = WARNING"
   override def config = testConfig
   override val logger = NoLogging
+
+  it should "respond with bad request on incorrect IP format" in {
+    Get("/ip/asdfg") ~> routes ~> check {
+      status shouldBe NotFound
+      responseAs[String].length should be > 0
+    }
+  } 
+
 /*
   val ip1Info = IpInfo("8.8.8.8", Option("United States"), Option("Mountain View"), Option(37.386), Option(-122.0838))
   val ip2Info = IpInfo("8.8.4.4", Option("United States"), None, Option(38.0), Option(-97.0))
@@ -31,12 +39,5 @@ class ServiceSpec extends FlatSpec with Matchers with ScalatestRouteTest with Se
   }
 
 
-  it should "respond with bad request on incorrect IP format" in {
-    Get("/ip/asdfg") ~> routes ~> check {
-      status shouldBe BadRequest
-      responseAs[String].length should be > 0
-    }
-
-
-  } */
+  */
 }

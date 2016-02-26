@@ -17,7 +17,6 @@ import java.io.IOException
 import scala.concurrent.{ ExecutionContextExecutor, Future }
 import spray.json.DefaultJsonProtocol
 
-import scala.collection.mutable.ListBuffer
 import Members._
 
 case class MemberInfo(id: String, name: Option[String], first_name: Option[String], street: Option[String], city: Option[String])
