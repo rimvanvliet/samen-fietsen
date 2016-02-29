@@ -2,7 +2,7 @@
 object Members {
   var members = List.empty[MemberInfo]
 
-  def init = {
+  def init(): Unit = {
     members ::= new MemberInfo("1", Some("van Vliet"), Some("Ruud"), Some("Kneuterstraat 7"), Some("7384 CM  Wilp"))
     members ::= new MemberInfo("2", Some("Puk"), Some("Piet"), Some("Kuilstraat 2"), Some("City"))
     members ::= new MemberInfo("3", Some("Pukkel"), Some("Johan"), Some("Breuninkhof 3"), Some(""))
