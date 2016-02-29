@@ -45,7 +45,7 @@ trait Service extends Protocols {
   }
 
   def initMemberInfo(): Future[String] = {
-    Members.init
+    Members.init()
     Future { "Members initialised" };
   }
 
@@ -80,7 +80,10 @@ trait Service extends Protocols {
             complete {
               initMemberInfo().map[ToResponseMarshallable] {
                 case (confirmation) => confirmation;
-              } } } } ~
+              } 
+              }
+            }
+          } ~
         path("members") {
           get {
             complete {
@@ -101,6 +104,8 @@ object HttpRouter extends App with Service {
 
   override val config = ConfigFactory.load()
   override val logger = Logging(system, getClass)
+  
+  Members.init()
 
   Http().bindAndHandle(routes, config.getString("http.interface"), config.getInt("http.port"))
 }
